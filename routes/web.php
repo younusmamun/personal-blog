@@ -85,12 +85,22 @@ Route::get('/adminlte', function () {
 });
 
 Route::group(['middleware' => ['auth', 'verified', 'role:admin']], function () {
+
     Route::get('/home_service_index', [HomeServiceController::class, 'index'])->name('home_service_index');
     Route::get('/home_service_create', [HomeServiceController::class, 'create'])->name('home_service_create');
     Route::post('/home_service_store', [HomeServiceController::class, 'store'])->name('home_service_store');
     Route::get('/home_service_edit/{id}', [HomeServiceController::class, 'edit'])->name('home_service_edit');
     Route::put('/home_service_update/{id}', [HomeServiceController::class, 'update'])->name('home_service_update');
     Route::put('/home_service_destroy/{id}', [HomeServiceController::class, 'destroy'])->name('home_service_destroy');
+
+
+    Route::get('/post_index', [PostController::class, 'index'])->name('post_index');
+    Route::get('/post_create', [PostController::class, 'create'])->name('post_create');
+    Route::post('/post_store', [PostController::class, 'store'])->name('post_store');
+    Route::get('/post_edit/{id}', [PostController::class, 'edit'])->name('post_edit');
+    Route::put('/post_update/{id}', [PostController::class, 'update'])->name('post_update');
+    Route::put('/post_destroy/{id}', [PostController::class, 'destroy'])->name('post_destroy');
+
 
     Route::resource('projectsingle', ProjectsinglepageController::class);
     Route::get('/projectsingle_edit/{id}', [ProjectsinglepageController::class, 'edit'])->name('projectsingle_edit');
